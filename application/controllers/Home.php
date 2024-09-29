@@ -21,11 +21,13 @@ class Home extends CI_Controller {
 
             $this->load->view('templates/templates-user/header', $data);
             $this->load->view('buku/daftarbuku', $data);
+            $this->load->view('templates/templates-user/modal');
             $this->load->view('templates/templates-user/footer', $data);
         } else {
             $data['user'] = 'Pengunjung';
             $this->load->view('templates/templates-user/header', $data);
             $this->load->view('buku/daftarbuku', $data);
+            $this->load->view('templates/templates-user/modal');
             $this->load->view('templates/templates-user/footer', $data);
         }
     }
@@ -36,10 +38,10 @@ class Home extends CI_Controller {
         $buku = $this->ModelBuku->joinKategoriBuku(['buku.id' => $id])->result();
 
         $data['user'] = "Pengunjung";
-        $data['title'] = "Detail Buku";
+        $data['judul'] = "Detail Buku";
 
         foreach ($buku as $fields) {
-            $data['judul'] = $fields->judul_buku;
+            $data['judul_buku'] = $fields->judul_buku;
             $data['pengarang'] = $fields->pengarang;
             $data['penerbit'] = $fields->penerbit;
             $data['kategori'] = $fields->kategori;
@@ -53,6 +55,7 @@ class Home extends CI_Controller {
         }
         $this->load->view('templates/templates-user/header', $data);
         $this->load->view('buku/detail-buku', $data);
+        $this->load->view('templates/templates-user/modal');
         $this->load->view('templates/templates-user/footer');
     }
 }

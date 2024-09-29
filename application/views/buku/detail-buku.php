@@ -1,6 +1,6 @@
 <div class="x_panel" align="center">
 
-    <div class="x_content mb-5">
+    <div class="x_content">
         <div class="row">
             <div class="col-sm-3 col-md-3">
                 <div class="thumbnail" style="height: auto; position: relative; left: 100%; width: 200%;">
@@ -12,7 +12,7 @@
                             <table class="table table-striped">
                                 <tr>
                                     <th nowrap>Judul Buku: </th>
-                                    <td><?= $judul; ?></td>
+                                    <td><?= $judul_buku; ?></td>
                                     <td>&nbsp;</td>
                                     <th>Kategori</th>
                                     <td><?= $kategori; ?></td>

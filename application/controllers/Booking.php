@@ -113,4 +113,63 @@ class Booking extends CI_Controller
             redirect(base_url('booking'));
         }
     }
+
+    public function bookingSelesai($where)
+    {
+        // Meng-update stok dan di-booking di table buku saat proses booking diselesaikan
+        $this->db->query("UPDATE buku, temp SET buku.dibooking=buku.dibooking+1, buku.stok=buku.stok-1 WHERE buku.id=temp.id_buku");
+
+        $tgl_sekarang = date('Y-m-d');
+        $isi_booking = [
+            'id_booking' => $this->ModelBooking->kodeOtomatis('booking', 'id_booking'),
+            'tgl_booking' => date('Y-m-d H:m:s'),
+            'batas_ambil' => date('Y-m-d', strtotime('+2 days', strtotime($tgl_sekarang))),
+            'id_user' => $where
+        ];
+
+        // Menyimpan ke table booking dan detail booking, dan mengosongkan table temporary
+        $this->ModelBooking->insertData('booking', $isi_booking);
+        $this->ModelBooking->simpanDetail($where);
+        $this->ModelBooking->kosongkanData('temp');
+
+        redirect(base_url('booking/info'));
+    }
+
+    public function info()
+    {
+        $where = $this->session->userdata('id_user');
+        $data['user'] = $this->session->userdata('nama');
+        $data['judul'] = "Selesai Booking";
+        $data['user_aktif'] = $this->ModelUser->cekData(['id' => $this->session->userdata('id_user')])->result();
+        $data['items'] = $this->db->query("SELECT*FROM booking bo, booking_detail d, buku bu where d.id_booking=bo.id_booking and d.id_buku=bu.id and bo.id_user='$where'")->result_array();
+
+        $this->load->view('templates/templates-user/header', $data);
+        $this->load->view('booking/info-booking', $data);
+        $this->load->view('templates/templates-user/modal');
+        $this->load->view('templates/templates-user/footer');
+    }
+
+    public function exportToPdf()
+    {
+        $id_user = $this->session->userdata('id_user');
+        $nama = $this->session->userdata('nama');
+        $data['user'] = $this->session->userdata('nama');
+        $data['judul'] = "Cetak Bukti Booking";
+        $data['user_aktif'] = $this->ModelUser->cekData(['id' => $id_user])->result();
+        $data['items'] = $this->db->query("SELECT*FROM booking bo, booking_detail d, buku bu WHERE d.id_booking=bo.id_booking AND d.id_buku=bu.id AND bo.id_user='$id_user'")->result_array();
+
+        $this->load->library('dompdf_gen');
+
+        $this->load->view('booking/bukti-pdf', $data);
+
+        $paper_size = 'A4'; //ukuran kertas
+        $orientation = 'landscape'; //tipe format kertas potrait atau landscape
+        $html = $this->output->get_output();
+
+        $this->dompdf->set_paper($paper_size, $orientation);
+        // Convert to PDF
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("bukti-booking-$nama.pdf", array('Attachment' => 0)); //nama PDF yang dihasilkan
+    }
 }

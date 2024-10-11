@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url(); ?>">
@@ -56,6 +56,31 @@
 <!-- Divider -->
 <hr class="sidebar-divider mt-3">
 
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Transaksi
+</div>
+<!-- Nav Item - Dashboard -->
+<li class="nav-item active">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a href="<?= base_url('pinjam'); ?>" class="nav-link pb-0">
+            <i class="fa fa-fw fa-shopping-cart"></i>
+            <span>Data Peminjaman</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="<?= base_url('pinjam/daftarBooking'); ?>" class="nav-link pb-0">
+            <i class="fa fa-fw fa-list"></i>
+            <span>Data Booking</span>
+        </a>
+    </li>
+</li>
+
+
+<!-- Divider -->
+<hr class="sidebar-divider mt-3">
 
 <!-- Sidebar Toggler (Sidebar) -->
 <div class="text-center d-none d-md-inline">

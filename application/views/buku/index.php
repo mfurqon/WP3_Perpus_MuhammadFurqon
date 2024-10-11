@@ -12,7 +12,7 @@
 
             <?= $this->session->flashdata('pesan'); ?>
 
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#bukuBaruModal">
+            <a href="" class="btn btn-info mb-3" data-toggle="modal" data-target="#bukuBaruModal">
                 <i class="fas fa-file-alt"></i>
                 Buku Baru
             </a>
@@ -54,7 +54,7 @@
                                 </picture>
                             </td>
                             <td>
-                                <a href="<?= base_url('buku/ubahBuku/') . $b['id']; ?>" class="badge badge-info">
+                                <a href="<?= base_url('buku/ubahBuku/') . $b['id']; ?>" class="badge badge-success">
                                     <i class="fas fa-edit"></i>
                                     Ubah
                                 </a>
@@ -147,7 +147,7 @@
                         <i class="fas fa-ban"></i>
                         Close
                     </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-info">
                         <i class="fas fa-plus-circle"></i>
                         Tambah
                     </button>

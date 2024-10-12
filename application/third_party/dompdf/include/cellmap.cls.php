@@ -402,10 +402,20 @@ class Cellmap {
     }
     
     $node = $frame->get_node();
+
+    if ($node instanceof DOMElement) {
+      $colspan = $node->getAttribute("colspan");
+      $rowspan = $node->getAttribute("rowspan");
+  } else {
+      // Jika $node bukan DOMElement, berikan nilai default atau handle sesuai kebutuhan
+      $colspan = 1;  // Default value, jika tidak ada atribut 'colspan'
+      $rowspan = 1;  // Default value, jika tidak ada atribut 'rowspan'
+  }
+  
     
     // Determine where this cell is going
-    $colspan = $node->getAttribute("colspan");
-    $rowspan = $node->getAttribute("rowspan");
+    // $colspan = $node->getAttribute("colspan");
+    // $rowspan = $node->getAttribute("rowspan");
 
     if ( !$colspan ) {
       $colspan = 1;

@@ -31,7 +31,7 @@ class Laporan extends CI_Controller
 
     public function laporanBukuPdf()
     {
-        $this->load->library('dompdf_gen');
+        // $this->load->library('dompdf_gen');
 
         $data['buku'] = $this->ModelBuku->getBuku()->result_array();
 
@@ -41,11 +41,17 @@ class Laporan extends CI_Controller
         $orientation = 'landscape';
         $html = $this->output->get_output();
 
+        $this->load->library('pdf');
+
+        $this->pdf->generate($html, "laporan-data-buku", $paper_size, $orientation);
+
+        /*
         $this->dompdf->set_paper($paper_size, $orientation);
         // Convert to PDF
         $this->dompdf->load_html($html);
         $this->dompdf->render();
         $this->dompdf->stream("laporan-data-buku.pdf", array('Attachment' => 0));
+        */
     }
 
     public function exportExcel()

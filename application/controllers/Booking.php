@@ -158,7 +158,6 @@ class Booking extends CI_Controller
         $data['user_aktif'] = $this->ModelUser->cekData(['id' => $id_user])->result();
         $data['items'] = $this->db->query("SELECT*FROM booking bo, booking_detail d, buku bu WHERE d.id_booking=bo.id_booking AND d.id_buku=bu.id AND bo.id_user='$id_user'")->result_array();
 
-        $this->load->library('dompdf_gen');
 
         $this->load->view('booking/bukti-pdf', $data);
 
@@ -166,10 +165,8 @@ class Booking extends CI_Controller
         $orientation = 'landscape'; //tipe format kertas potrait atau landscape
         $html = $this->output->get_output();
 
-        $this->dompdf->set_paper($paper_size, $orientation);
-        // Convert to PDF
-        $this->dompdf->load_html($html);
-        $this->dompdf->render();
-        $this->dompdf->stream("bukti-booking-$nama.pdf", array('Attachment' => 0)); //nama PDF yang dihasilkan
+        $this->load->library('pdf');
+
+        $this->pdf->generate($html, "Bukti Booking " . $nama, $paper_size, $orientation);
     }
 }

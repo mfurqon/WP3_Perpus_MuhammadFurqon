@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laporan Buku PDF</title>
-</head><body>
+</head>
+
+<body>
     <style type="text/css">
         .table-data {
             width: 100%;
@@ -50,4 +54,6 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-</body></html>
+</body>
+
+</html>

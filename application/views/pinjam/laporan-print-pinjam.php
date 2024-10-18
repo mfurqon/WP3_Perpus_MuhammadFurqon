@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Cetak Buku</title>
+    <title>Laporan Cetak Pinjam</title>
 </head>
 <body>
     <style type="text/css">
@@ -20,42 +20,45 @@
             padding: 10px;
         }
 
+        .table-data th {
+            background-color: grey;
+        }
+
         h3 {
             font-family: Verdana;
         }
     </style>
 
-
-    <h3><center>Laporan Data Buku Perpustakaan Online</center></h3>
+    <h3><center>LAPORAN DATA PEMINJAMAN BUKU</center></h3>
     <br />
     <table class="table-data">
         <thead>
             <tr>
                 <th>No</th>
+                <th>Nama Anggota</th>
                 <th>Judul Buku</th>
-                <th>Pengarang</th>
-                <th>Penerbit</th>
-                <th>Tahun Terbit</th>
-                <th>ISBN</th>
-                <th>Stok</th>
+                <th>Tanggal Pinjam</th>
+                <th>Tanggal Kembali</th>
+                <th>Tanggal Pengembalian</th>
+                <th>Total Denda</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            <?php $no = 1; foreach ($buku as $b) : ?>
+            <?php $no = 1; foreach ($laporan as $l) : ?>
                 <tr>
-                    <th scope="row"><?= $no++; ?></th>
-                    <td><?= $b['judul_buku']; ?></td>
-                    <td><?= $b['pengarang']; ?></td>
-                    <td><?= $b['penerbit']; ?></td>
-                    <td><?= $b['tahun_terbit']; ?></td>
-                    <td><?= $b['isbn']; ?></td>
-                    <td><?= $b['stok']; ?></td>
+                    <td scope="row"><?= $no++; ?></td>
+                    <td><?= $l['nama']; ?></td>
+                    <td><?= $l['judul_buku']; ?></td>
+                    <td><?= $l['tgl_pinjam']; ?></td>
+                    <td><?= $l['tgl_kembali']; ?></td>
+                    <td><?= $l['tgl_pengembalian']; ?></td>
+                    <td><?= $l['total_denda']; ?></td>
+                    <td><?= $l['status']; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-
-
     <script type="text/javascript">
         window.print();
     </script>

@@ -11,24 +11,31 @@
                         <center>
                             <table class="table table-striped">
                                 <tr>
-                                    <th nowrap>Judul Buku: </th>
+                                    <th nowrap>Judul Buku:</th>
                                     <td><?= $judul_buku; ?></td>
                                     <td>&nbsp;</td>
-                                    <th>Kategori</th>
+                                    <th>Kategori:</th>
                                     <td><?= $kategori; ?></td>
                                 </tr>
                                 <tr>
-                                    <th nowrap>Penerbit: </th>
+                                    <th nowrap>Penerbit:</th>
                                     <td><?= $penerbit; ?></td>
                                     <td>&nbsp;</td>
-                                    <th>Dipinjam</th>
+                                    <th>Dipinjam:</th>
                                     <td><?= $dipinjam; ?></td>
                                 </tr>
                                 <tr>
                                     <th nowrap>Tahun Terbit: </th>
                                     <td><?= substr($tahun, 0, 4); ?></td>
                                     <td>&nbsp;</td>
-                                    <th>Tersedia: </th>
+                                    <th>Dibooking</th>
+                                    <td><?= $dibooking; ?></td>
+                                </tr>
+                                <tr>
+                                    <th nowrap>ISBN:</th>
+                                    <td><?= $isbn; ?></td>
+                                    <td>&nbsp;</td>
+                                    <th>Tersedia</th>
                                     <td><?= $stok; ?></td>
                                 </tr>
                             </table>

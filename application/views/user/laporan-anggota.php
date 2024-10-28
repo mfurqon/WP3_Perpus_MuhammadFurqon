@@ -39,7 +39,7 @@
                             <td><?= $l['nama']; ?></td>
                             <td><?= $l['alamat']; ?></td>
                             <td><?= $l['email']; ?></td>
-                            <td><?= $l['tanggal_input']; ?></td>
+                            <td><?= date('d-m-Y', $l['tanggal_input']); ?></td>
                             <td><?= $l['role']; ?></td>
                             <td>
                                 <img src="<?= base_url('assets/img/profile/' . $l['image']); ?>" alt="profile-image" style="width: 100px; height: 100px;">

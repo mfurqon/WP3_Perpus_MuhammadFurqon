@@ -29,7 +29,7 @@ header("Expires: 0");
 </style>
 
 <h3>
-    <center>LAPORAN DATA PEMINJAMAN BUKU</center>
+    <center>LAPORAN DATA ANGGOTA</center>
 </h3>
 <br />
 <table class="table-data" border="1">
@@ -52,7 +52,7 @@ header("Expires: 0");
                 <td><?= $l['nama']; ?></td>
                 <td><?= $l['alamat']; ?></td>
                 <td><?= $l['email']; ?></td>
-                <td><?= $l['tanggal_input']; ?></td>
+                <td><?= date('d-m-Y', $l['tanggal_input']); ?></td>
                 <td><?= $l['role']; ?></td>
                 <td><?= $l['image']; ?></td>
             </tr>

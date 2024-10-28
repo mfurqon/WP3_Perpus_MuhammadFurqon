@@ -49,7 +49,10 @@
                         <input type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Masukkan Nama Lengkap">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Masukkan Alamat Lengkap">
+                        <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Masukkan Alamat Tempat Tinggal">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukkan Alamat Email">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Masukkan Password">

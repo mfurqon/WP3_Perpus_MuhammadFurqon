@@ -2,11 +2,6 @@
 
 class Member extends CI_Controller
 {
-    function __construct()
-    {
-        parent::__construct();
-    }
-
     public function index()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
